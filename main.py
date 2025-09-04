@@ -1,18 +1,16 @@
-def get_book_text(book):
-    with open(f"books/{book}") as f:
-        contents = f.read()
-        return contents
-
-def get_words(book):
-    with open(f"books/{book}") as b:
-        text = b.read()
-        words = text.split()
-        word_count = len(words)
-        return word_count
-
+from stats import get_num_words
+from stats import character_count
+from stats import sort_characters
+    
 def main():
-    text = get_words("frankenstein.txt")
+    text = get_num_words("frankenstein.txt")
+    counts = sort_characters("frankenstein.txt")
+    print("============ BOOKBOT ============")
+    print("analyzing book found at book/frankenstein.txt...")
+    print("----------- Word Count ----------")
     print(f"{text} words found in the document")
+    print("--------- Character Count -------")
+    print(counts)
     return 
 
 main()
