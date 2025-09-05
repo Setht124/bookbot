@@ -7,7 +7,7 @@ def get_num_words(book):
 def get_book_text(book):
     with open(f"{book}") as f:
         contents = f.read()
-        return contents
+        return contents.lower()
 def character_count(book):
     text = get_book_text(book).lower()
     counts = {
