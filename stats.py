@@ -1,11 +1,11 @@
 def get_num_words(book):
-    with open(f"books/{book}") as b:
+    with open(f"{book}") as b:
         text = b.read()
         words = text.split()
         word_count = len(words)
         return word_count
 def get_book_text(book):
-    with open(f"books/{book}") as f:
+    with open(f"{book}") as f:
         contents = f.read()
         return contents
 def character_count(book):
@@ -46,9 +46,16 @@ def character_count(book):
 
     return counts
 
-def sort_on(char, num):
-    return char["char"], num["num"]
+def sort_on(item):
+    return item["num"]
 
 def sort_characters(book):
     count = character_count(book)
-    return count.sort(reverse= True, key= sort_on)
+    counts_list = []
+    for ch, num in count.items():
+        if not ch.isalpha():
+            continue
+        else:   
+            counts_list.append({"char": ch, "num": num})
+    counts_list.sort(reverse= True, key= sort_on)
+    return counts_list
